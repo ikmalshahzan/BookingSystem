@@ -9,6 +9,8 @@ class Vendor extends Model
 {
     use HasFactory;
 
+    public $fillable = ['name', 'ssm', 'contact_no'];
+
     public function bookings()
     {
         $this->hasMany(Booking::class, 'vendor_id', 'id');

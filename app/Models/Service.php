@@ -9,6 +9,8 @@ class Service extends Model
 {
     use HasFactory;
 
+    public $fillable = ['name', 'description', 'vendor_id'];
+
     public function vendor()
     {
         $this->belongsTo(Vendor::class, 'vendor_id', 'id');

@@ -24,15 +24,33 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::middleware('isCustomer')->group(function () {
-        Route::get('/dashboard', function () {
+
+    //Admin Route
+    Route::group(['middleware'=>'isAdmin','prefix'=>'admin','as'=>'admin.'], function(){
+        
+    });
+    
+    //Customer Route
+    Route::group(['middleware'=>'isCustomer'], function(){
+        
+        Route::get('/index', function(){
             return view('dashboard');
-        })->name('dashboard');
+        })->name('index');
+
     });
 
-    Route::middleware('isAdmin')->group(function () {
-        Route::get('/admin', function () {
-           return view('admin');
-        })->name('admin.dashboard');
+    //vendor route
+    Route::group(['middleware'=>'isVendor','prefix'=>'vendor','as'=>'vendor.'], function(){
+
+    });
+
+    //booking route
+    Route::group(['prefix'=>'booking','as'=>'booking.'], function(){
+        
+    });
+
+    //Service route
+    Route::group(['prefix'=>'service','as'=>'service.'], function(){
+
     });
 });
