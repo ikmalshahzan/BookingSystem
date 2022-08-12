@@ -27,21 +27,25 @@ Route::middleware([
 
     //Admin Route
     Route::group(['middleware'=>'isAdmin','prefix'=>'admin','as'=>'admin.'], function(){
-        
+      Route::get('/', function(){
+        return view('admin.dashboard');
+      })->name('dashboard');
     });
     
     //Customer Route
     Route::group(['middleware'=>'isCustomer'], function(){
         
-        Route::get('/index', function(){
+        Route::get('/dashboard', function(){
             return view('dashboard');
-        })->name('index');
+        })->name('dashboard');
 
     });
 
     //vendor route
     Route::group(['middleware'=>'isVendor','prefix'=>'vendor','as'=>'vendor.'], function(){
-
+        Route::get('/dashboard', function(){
+            return view('vendor.dashboard');
+          })->name('dashboard');
     });
 
     //booking route
