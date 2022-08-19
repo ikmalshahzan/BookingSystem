@@ -15,6 +15,25 @@
                     <x-jet-nav-link href="#" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+
+                    <!-- Ni untuk vendor -->
+                    @if(auth()->user()->role == 1)
+                    <x-jet-nav-link href="#" :active="request()->routeIs('vendor')">
+                        {{ __('Vendor') }}
+                    </x-jet-nav-link>
+                    @endif
+
+                    <!-- Ni untuk vendor -->
+                    @if(auth()->user()->role == 1)
+                    <x-jet-nav-link href="{{ route('service.index') }}" :active="request()->routeIs('service')">
+                        {{ __('Service') }}
+                    </x-jet-nav-link>
+                    @endif
+
+                    <x-jet-nav-link href="#" :active="request()->routeIs('booking')">
+                        {{ __('Booking') }}
+                    </x-jet-nav-link>
+
                 </div>
             </div>
 

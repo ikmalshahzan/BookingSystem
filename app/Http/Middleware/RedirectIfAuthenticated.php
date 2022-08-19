@@ -24,12 +24,14 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                if (auth()->user()->role == User::ADMIN) {
-                    return redirect()->route('admin.index');
-                } elseif (auth()->user()->role == User::VENDOR) {
-                    return redirect()->route('vendor.index');
-                } elseif (auth()->user()->role == User::CUSTOMER) {
-                    return redirect()->route('index');
+                if(auth()->user()->role == User::ADMIN){
+                    return redirect()->route('admin.dashboard');
+                }else if(auth()->user()->role == User::CUSTOMER){
+                    return redirect()->route('dashboard');
+                }else if(auth()->user()->role == User::VENDOR){
+                    return redirect()->route('vendor.dashboard');
+                }else{
+                    abort(404);
                 }
                 //return redirect(RouteServiceProvider::HOME);
             }

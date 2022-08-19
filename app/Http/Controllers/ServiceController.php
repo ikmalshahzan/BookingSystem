@@ -14,7 +14,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = Service::all();
+        return view('service.index',compact('services'));
     }
 
     /**
@@ -24,7 +25,10 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+
+
+
+        return view('service.create');
     }
 
     /**
@@ -35,7 +39,12 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Service::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'vendor_id' => 1
+        ]);
+        return redirect()->route("service.index");
     }
 
     /**
@@ -80,6 +89,8 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+
+        return redirect()->route("service.index");
     }
 }

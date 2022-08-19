@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
@@ -55,6 +56,10 @@ Route::middleware([
 
     //Service route
     Route::group(['prefix'=>'service','as'=>'service.'], function(){
+        Route::get('/service',[ServiceController::class, 'index'])->name('index');
 
+          Route::get('/create', [ServiceController::class, 'create'])->name('create');
+          Route::post('/create', [ServiceController::class, 'store'])->name('store');
+          Route::delete('/destroy/{service}', [ServiceController::class, 'destroy'])->name('destroy');
     });
 });
