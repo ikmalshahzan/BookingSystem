@@ -27,39 +27,37 @@ Route::middleware([
 ])->group(function () {
 
     //Admin Route
-    Route::group(['middleware'=>'isAdmin','prefix'=>'admin','as'=>'admin.'], function(){
-      Route::get('/', function(){
-        return view('admin.dashboard');
-      })->name('dashboard');
+    Route::group(['middleware' => 'isAdmin', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::get('/', function () {
+            return view('admin.dashboard');
+        })->name('dashboard');
     });
-    
+
     //Customer Route
-    Route::group(['middleware'=>'isCustomer'], function(){
-        
-        Route::get('/dashboard', function(){
+    Route::group(['middleware' => 'isCustomer'], function () {
+
+        Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-
     });
 
     //vendor route
-    Route::group(['middleware'=>'isVendor','prefix'=>'vendor','as'=>'vendor.'], function(){
-        Route::get('/dashboard', function(){
+    Route::group(['middleware' => 'isVendor', 'prefix' => 'vendor', 'as' => 'vendor.'], function () {
+        Route::get('/dashboard', function () {
             return view('vendor.dashboard');
-          })->name('dashboard');
+        })->name('dashboard');
     });
 
     //booking route
-    Route::group(['prefix'=>'booking','as'=>'booking.'], function(){
-        
+    Route::group(['prefix' => 'booking', 'as' => 'booking.'], function () {
     });
 
     //Service route
-    Route::group(['prefix'=>'service','as'=>'service.'], function(){
-        Route::get('/service',[ServiceController::class, 'index'])->name('index');
+    Route::group(['prefix' => 'service', 'as' => 'service.'], function () {
+        Route::get('/service', [ServiceController::class, 'index'])->name('index');
 
-          Route::get('/create', [ServiceController::class, 'create'])->name('create');
-          Route::post('/create', [ServiceController::class, 'store'])->name('store');
-          Route::delete('/destroy/{service}', [ServiceController::class, 'destroy'])->name('destroy');
+        Route::get('/create', [ServiceController::class, 'create'])->name('create');
+        Route::post('/create', [ServiceController::class, 'store'])->name('store');
+        Route::delete('/destroy/{service}', [ServiceController::class, 'destroy'])->name('destroy');
     });
 });
