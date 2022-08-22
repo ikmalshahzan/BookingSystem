@@ -13,11 +13,11 @@ class Vendor extends Model
 
     public function bookings()
     {
-        $this->hasMany(Booking::class, 'vendor_id', 'id');
+        return $this->hasMany(Booking::class, 'vendor_id', 'id');
     }
 
     public function services()
     {
-        $this->hasMany(Service::class, 'vendor_id', 'id');
+        return $this->hasMany(Service::class, 'vendor_id', 'id');
     }
 }

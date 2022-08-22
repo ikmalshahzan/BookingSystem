@@ -39,7 +39,7 @@ class ServiceController extends Controller
         Service::create([
             'name' => $request->name,
             'description' => $request->description,
-            'vendor_id' => 1
+            'vendor_id' => isset(auth()->user()->vendor_id) ? auth()->user()->vendor_id : null,
         ]);
         return redirect()->route("service.index");
     }

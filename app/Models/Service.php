@@ -13,6 +13,9 @@ class Service extends Model
 
     public function vendor()
     {
-        $this->belongsTo(Vendor::class, 'vendor_id', 'id');
+        return $this->belongsTo(Vendor::class, 'vendor_id', 'id')
+        ->withDefault([
+            'name' => 'Null',
+        ]);
     }
 }

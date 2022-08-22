@@ -14,7 +14,8 @@ class VendorController extends Controller
      */
     public function index()
     {
-        //
+        $vendors = Vendor::all();
+        return view('vendor.index', compact('vendors'));
     }
 
     /**
@@ -24,7 +25,8 @@ class VendorController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('vendor.create');
     }
 
     /**
@@ -35,7 +37,13 @@ class VendorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Vendor::create([
+            'name' => $request->name,
+            'ssm' => $request->ssm,
+            'contact_no' => $request->contact_no,
+        ]);
+
+        return redirect()->route('admin.vendor.index');
     }
 
     /**
@@ -46,7 +54,7 @@ class VendorController extends Controller
      */
     public function show(Vendor $vendor)
     {
-        //
+        dd($vendor->services);
     }
 
     /**

@@ -18,7 +18,7 @@
 
                     <!-- Ni untuk vendor -->
                     @if(auth()->user()->role == 1)
-                    <x-jet-nav-link href="#" :active="request()->routeIs('vendor')">
+                    <x-jet-nav-link href="{{route('admin.vendor.index')}}" :active="request()->routeIs('vendor')">
                         {{ __('Vendor') }}
                     </x-jet-nav-link>
                     @endif

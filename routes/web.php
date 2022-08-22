@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
@@ -31,6 +32,16 @@ Route::middleware([
         Route::get('/', function () {
             return view('admin.dashboard');
         })->name('dashboard');
+
+        //Vendor Crud route
+     Route::group(['prefix' => 'vendor', 'as' => 'vendor.'], function () {
+        Route::get('/', [VendorController::class, 'index'])->name('index');
+        Route::get('/create', [VendorController::class, 'create'])->name('create');
+        Route::post('/create', [VendorController::class, 'store'])->name('store');
+        Route::get('/{vendor}', [VendorController::class, 'show'])->name('show');
+        Route::delete('/destroy/{vendor}', [VendorController::class, 'destroy'])->name('destroy');
+    });
+});
     });
 
     //Customer Route
@@ -60,4 +71,5 @@ Route::middleware([
         Route::post('/create', [ServiceController::class, 'store'])->name('store');
         Route::delete('/destroy/{service}', [ServiceController::class, 'destroy'])->name('destroy');
     });
-});
+
+    
