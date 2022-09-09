@@ -47,7 +47,7 @@
     <div class="relative bg-white">
         <div class="max-w-8xl mx-auto px-4 sm:px-6">
             <div
-                class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+                class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="#">
                         <span class="sr-only">Workflow</span>
@@ -72,7 +72,7 @@
                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                     <form action="" class="relative mx-4 w-max">
                         <input type="search"
-                            class="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-lime-300 focus:pl-16 focus:pr-4" />
+                            class="peer cursor-pointer relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-gray-200 focus:pl-10 focus:pr-4" />
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-gray-500 px-3.5 hover:border-lime-300 hover:stroke-lime-500"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
